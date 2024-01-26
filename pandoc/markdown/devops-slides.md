@@ -10,7 +10,7 @@ css:
 
 # Markdown
 
-## Code
+## Code sample
 
 <section>
   <pre><code data-trim data-noescape>
