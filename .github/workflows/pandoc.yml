@@ -16,8 +16,19 @@ jobs:
             --template pandoc/templates/default.revealjs
             -o docs/devops-slides.html
             pandoc/markdown/devops-slides.md            
-          
-      - uses: actions/upload-artifact@v3
+      - name: Commit files # commit the output folder
+        run: |
+          git config --local user.email "test@github.com"
+          git config --local user.name "GitHub Action"
+          git add ./docs/devops-slides.html
+          git commit -m "Add result transformation"
+      - name: Push changes # push the output folder to your repo
+        uses: ad-m/github-push-action@master
         with:
-          name: docs
-          path: docs            
+          branch: develop #ignore if your branch is master
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true          
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: docs
+      #     path: docs            
