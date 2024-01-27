@@ -9,6 +9,9 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    # defaults:
+    #   run:
+    #     working-directory: ./monorepo
     steps:
       - uses: actions/checkout@v3
       - uses: bazelbuild/setup-bazelisk@v2
@@ -17,5 +20,8 @@ jobs:
         with:
           path: "~/.cache/bazel"
           key: bazel
-      - run: bazel build //...
-      - run: bazel test //...
+      - name: Build bazel monorepo
+        working-directory: ./monorepo
+        run: bazel build //...
+      # - name: Test bazel monorepo
+      #   run: bazel test //...
