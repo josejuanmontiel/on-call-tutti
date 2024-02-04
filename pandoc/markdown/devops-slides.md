@@ -8,247 +8,31 @@ css:
   - 'https://fonts.googleapis.com/css?family=Roboto+Slab:700'
 ---
 
-# Markdown
+# On call
 
-## Code sample
+## {background-image="background/slide1.jpg"}
+Imagine you are a worker of on call system
 
-<section>
-  <pre><code data-trim data-noescape>
-(def lazy-fib
-  (concat
-   [0 1]
-   ((fn rfib [a b]
-        (lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))
-  </code></pre>
-</section>
+## {background-image="background/slide2.jpg"}
+And you are always attending all the call because you are the most expertise worker.
 
-## Some PantUML sample
+## {background-image="background/slide3.jpg"}
+But there is another workers, with less experience, that could attend some call, and let you deal with the most difficult ones.
 
-```plantuml
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+## {background-image="background/slide4.jpg"}
+You need a better algorithm to choose the correct operator.
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
-```
+## {background-image="background/slide5.jpg"}
+Here is where this monorepo came to the rescue, and Bazel will build the solution.
 
-## Markdown: lists
+## {background-image="background/slide6.jpg"}
+Use a monorepo to build the code
 
-```md
-1. First
-1. Second
-    1. nested
-    1. nested
-```
+## {background-image="background/slide7.jpg"}
+Use bazel to coordinate the different programing languages
 
-1. First
-1. Second
-    1. nested
-    1. nested
+## {background-image="background/slide8.jpg"}
+Build the most optimal algorithm to solve the problem
 
-## Markdown: links
-
-```md
-[Drupal](https://www.drupal.org)
-```
-
-[Drupal](https://www.drupal.org)
-
-## Markdown: images
-
-```md
-![Caption](./images/yp.jpeg)
-```
-
-![Caption](./images/yp.jpeg)
-
-## Markdown: subheadings
-
-```md
-### H3 heading
-
-#### H4 heading
-
-##### H5 heading
-
-###### H6 heading
-```
-
-### H3 heading
-
-#### H4 heading
-
-##### H5 heading
-
-###### H6 heading
-
-# Pandoc
-
-## Pandoc: Document converter
-
-- Goal: convert anything to anything
-- Method: anything -> markdown -> anything
-- [https://pandoc.org/](https://pandoc.org/)
-
-## Pandoc: input formats
-
-<div style="color: #42affa">
-```sh
-$ pandoc --list-input-formats
-commonmark
-creole
-docbook
-docx
-dokuwiki
-epub
-fb2
-gfm
-haddock
-html
-ipynb
-jats
-json
-latex
-man
-markdown
-markdown_github
-markdown_mmd
-markdown_phpextra
-markdown_strict
-mediawiki
-muse
-native
-odt
-opml
-org
-rst
-t2t
-textile
-tikiwiki
-twiki
-vimwiki
-```
-</div>
-
-## Pandoc: output formats
-
-<div style="color: #42affa">
-```sh
-$ pandoc --list-output-formats
-asciidoc
-asciidoctor
-beamer
-commonmark
-context
-docbook
-docbook4
-docbook5
-docx
-dokuwiki
-dzslides
-epub
-epub2
-epub3
-fb2
-gfm
-haddock
-html
-html4
-html5
-icml
-ipynb
-jats
-json
-latex
-man
-markdown
-markdown_github
-markdown_mmd
-markdown_phpextra
-markdown_strict
-mediawiki
-ms
-muse
-native
-odt
-opendocument
-opml
-org
-plain
-pptx
-revealjs
-rst
-rtf
-s5
-slideous
-slidy
-tei
-texinfo
-textile
-zimwiki
-```
-</div>
-
-## Pandoc: usage
-
-<div style="color: #42affa">
-```sh
-$ pandoc \
- --standalone \
- -t revealjs \
- -o html/devops-slides.html \
- markdown/devops-slides.md
-```
-</div>
-
-# Reveal.js
-
-## Reveal.js: beautiful presentations
-
-- Home page: [https://revealjs.com/#/](https://revealjs.com/#/)
-- GitHub repo: [https://github.com/hakimel/reveal.js](https://github.com/hakimel/reveal.js)
-
-# GitLab CI
-
-## GitLab CI: free and flexible
-
-- fully integrated with GitLab
-- free for public repositories
-- use any Docker image
-- jobs and pipelines
-- branches, tags, commits
-
-## GitLab CI: pages
-
-- Create a job called `pages`.
-- Add files to `public/`.
-- Save it as an artifact.
-
-## GitLab CI: example `.gitlab-ci.yml`
-
-```yaml
-variables:
-  GIT_SUBMODULE_STRATEGY: recursive
-before_script:
-  - apt-get update -qq && apt-get install -qq -y pandoc
-  - pandoc --version
-pages:
-  stage: deploy
-  script:
-    - make build
-    - cp -R html public
-  artifacts:
-    paths:
-      - public
-```
-
-# Live Demo
-
-## Live Demo: typos
-
-### Do not trust your spell checker
-
-- edit
-- `make`
-- commit
-- push
+## Code
+https://github.com/josejuanmontiel/on-call-tutti

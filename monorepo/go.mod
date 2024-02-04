@@ -1,4 +1,4 @@
-module github.com/kriscfoster/multi-language-bazel-monorepo
+module github.com/josejuanmontiel/on-call-tutti/monorepo
 
 go 1.18
 

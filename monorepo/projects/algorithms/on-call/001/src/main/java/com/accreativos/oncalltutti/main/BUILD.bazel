@@ -1,0 +1,15 @@
+load("@rules_java//java:defs.bzl", "java_binary", "java_library")
+
+java_library(
+    name = "main",
+    srcs = ["Main.java"],
+    visibility = ["//:__subpackages__"],
+    deps = ["//projects/algorithms/on-call/001/src/main/java/com/accreativos/oncalltutti/greeter"],
+)
+
+java_binary(
+    name = "Main",
+    main_class = "com.accreativos.oncalltutti.main.Main",
+    visibility = ["//visibility:public"],
+    runtime_deps = [":main"],
+)

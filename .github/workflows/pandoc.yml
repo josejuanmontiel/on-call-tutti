@@ -14,6 +14,7 @@ jobs:
             --standalone
             -t revealjs
             --template pandoc/templates/default.revealjs
+            -H pandoc/styles/styles.html
             -o docs/devops-slides.html
             pandoc/markdown/devops-slides.md            
       - name: Commit files # commit the output folder
