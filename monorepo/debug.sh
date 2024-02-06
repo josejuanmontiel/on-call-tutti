@@ -1,4 +1,5 @@
 bazelisk run //projects/algorithms/on-call/001/src/main/java/com/accreativos/oncalltutti/main:Main -- --debug
+bazelisk run //projects/algorithms/on-call/comparator:Solver -- --debug
 
 bazelisk build -c dbg //projects/samples/go_hello_world...
 

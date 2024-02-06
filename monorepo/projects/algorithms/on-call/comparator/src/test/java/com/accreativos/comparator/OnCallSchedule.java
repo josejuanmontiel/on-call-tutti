@@ -1,4 +1,4 @@
-package com.accreativos.compartor;
+package com.accreativos.comparator;
 
 public class OnCallSchedule {
 

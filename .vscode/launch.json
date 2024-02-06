@@ -5,7 +5,7 @@
             "type": "java",
             "name": "Solver",
             "request": "launch",
-            "mainClass": "com.accreativos.compartor.Solver",
+            "mainClass": "com.accreativos.comparator.Solver",
             "projectName": "on-call-tutti_5260c176"
         },
         {

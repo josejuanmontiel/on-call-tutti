@@ -2,5 +2,6 @@
     "cSpell.words": [
         "pandoc",
         "revealjs"
-    ]
+    ],
+    "java.compile.nullAnalysis.mode": "automatic"
 }
