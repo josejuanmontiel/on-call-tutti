@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary")
+
+go_binary(
+    name = "main",
+    srcs = ["main.go"],
+    importpath = "github.com/josejuanmontiel/on-call-tutti/monorepo/projects/github/actions/code/sample01/cmd/hypothetical",
+    deps = [
+        '//projects/github/actions/code/sample01/pkg/hypothetical',
+         "@com_github_sethvargo_go_githubactions//:go_default_library"
+    ]
+)

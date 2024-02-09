@@ -1,4 +1,4 @@
-name: CI
+name: Sample Go Action
 
 on:
   push:
@@ -14,5 +14,9 @@ jobs:
     #     working-directory: ./monorepo
     steps:
       # Replace the action with a similar one
-      - uses: josejuanmontiel/on-call-tutti-action@v1
+      - uses: josejuanmontiel/on-call-tutti-action@v1.0.1
+      with:
+        lease-duration: 2h
+        role: 'user'
+
 

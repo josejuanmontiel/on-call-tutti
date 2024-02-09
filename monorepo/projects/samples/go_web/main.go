@@ -7,7 +7,7 @@ import (
 	"runtime"
 
 	"github.com/gorilla/mux"
-	"github.com/josejuanmontiel/on-call-tutti/monorepo/projects/go_hello_world"
+	"github.com/josejuanmontiel/on-call-tutti/monorepo/projects/samples/go_hello_world"
 )
 
 func YourHandler(w http.ResponseWriter, r *http.Request) {
@@ -30,7 +30,7 @@ func main() {
 	r.HandleFunc("/", YourHandler)
 	// Bind to a port and pass our router in
 	port := getPort()
-	log.Println("running program's operating system target: " +  runtime.GOOS)
+	log.Println("running program's operating system target: " + runtime.GOOS)
 	log.Println("running program's architecture target: " + runtime.GOARCH)
 	log.Println("Going to listen on port: " + port)
 	log.Fatal(http.ListenAndServe(":"+port, r))

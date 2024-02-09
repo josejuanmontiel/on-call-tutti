@@ -1,6 +1,14 @@
 {
     "version": "0.2.0",
     "configurations": [
+
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "com.accreativos.oncalltutti.main.Main",
+            "projectName": "on-call-tutti_5260c176"
+        },
         {
             "type": "java",
             "name": "Solver",
@@ -8,6 +16,20 @@
             "mainClass": "com.accreativos.comparator.Solver",
             "projectName": "on-call-tutti_5260c176"
         },
+        {
+            "name": "Remote Java",
+            "type": "java",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": "5005"
+        },
+        {
+            "name": "Launch Go file",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "monorepo/projects/github/actions/code/sample01/cmd/hypothetical/main.go"
+        },        
         {
             "name": "Delve Remote Go",
             "type": "go",
@@ -17,13 +39,6 @@
             "remotePath": "${workspaceFolder}",
             "port": 2345,
             "host": "127.0.0.1"
-        },
-        {
-            "name": "Remote Java",
-            "type": "java",
-            "request": "attach",
-            "hostName": "localhost",
-            "port": "5005"
         },
         {
             "name": "ExampleMihai",

@@ -1,0 +1,17 @@
+runs:
+  using: node16
+  main: invoke-binary.js
+
+inputs:
+  lease-duration:
+    description: 'Lease duration'
+    required: true
+    default: '1'
+  role:
+    description: 'Role'
+    required: true
+    default: 'admin'
+outputs:
+  result: # id of the output
+    description: 'The sample result'
+
