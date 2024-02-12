@@ -86,3 +86,25 @@
 # https://github.com/form3tech-oss/go-pagerduty-oncall-report
 # https://github.com/djlauk/oncasc
 # https://github.com/alpha74/onCallApp/blob/main/app.js
+
+# Time Alg
+# Stackoverflow
+#   SQL 
+#     https://stackoverflow.com/questions/964288/flattening-intersecting-timespans
+#     https://stackoverflow.com/questions/851324/min-effective-and-termdate-for-contiguous-dates
+#   General (c# .NET)
+#     https://softwareengineering.stackexchange.com/questions/241373/algorithm-for-flattening-overlapping-ranges
+#     https://stackoverflow.com/questions/5712472/fastest-way-to-split-overlapping-date-ranges/5713241#5713241
+#   https://www.reddit.com/r/golang/comments/brr39o/time_intersection_problem/
+#   
+#   Github
+#     Net
+#       https://github.com/Giannoudis/TimePeriodLibrary
+#       https://www.codeproject.com/script/Content/ViewAssociatedFile.aspx?rzp=%2FKB%2FArticles%2FTimePeriod%2FTimePeriod_2.1.1.zip&zep=TimePeriodTests%2FTimePeriodIntersectorTest.cs&obid=168662&obtid=2&ovid=39
+#     Go
+#       https://github.com/spothero/periodic
+#       https://github.com/retailify/go-interval
+#     Java
+#       *** https://github.com/go-follow/time-interval
+#     Paper
+#       *** https://ics.uci.edu/~alspaugh/cls/shr/allen.html

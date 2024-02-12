@@ -1,6 +1,9 @@
 name: Pandoc build
 
-on: push
+on:
+  push:
+    paths:
+      - 'pandoc/**'
 
 jobs:
   convert_via_pandoc:

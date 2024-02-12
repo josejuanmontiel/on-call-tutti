@@ -3,8 +3,8 @@ name: Sample Go Action
 on:
   push:
     branches: [ develop ]
-  # pull_request:
-  #   branches: [ develop ]
+    paths:
+      - 'monorepo/projects/algorithms/**'
 
 jobs:
   ci:
