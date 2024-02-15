@@ -18,13 +18,13 @@ jobs:
             -t revealjs
             --template pandoc/templates/default.revealjs
             -H pandoc/styles/styles.html
-            -o docs/devops-slides.html
-            pandoc/markdown/devops-slides.md            
+            -o docs/index.html
+            pandoc/markdown/index.md            
       - name: Commit files # commit the output folder
         run: |
           git config --local user.email "test@github.com"
           git config --local user.name "GitHub Action"
-          git add ./docs/devops-slides.html
+          git add ./docs/index.html
           git commit -m "Add result transformation"
       - name: Push changes # push the output folder to your repo
         uses: ad-m/github-push-action@master

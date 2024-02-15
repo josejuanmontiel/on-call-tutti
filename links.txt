@@ -1,10 +1,10 @@
 # https://github.com/josejuanmontiel/on-call-tutti
-# https//josejuanmontiel.github.io/on-call-tutti/devops-slides.html
+# https//josejuanmontiel.github.io/on-call-tutti/index.html
 
 # Pandoc - Revealjs - Gitlab
 # https://medium.com/isovera/devops-for-presentations-reveal-js-markdown-pandoc-gitlab-ci-34d07d2c1011
-# https://benjifisher.gitlab.io/slide-decks/devops-slides.html
-# https://gitlab.com/benjifisher/slide-decks/-/blob/main/markdown/devops-slides.md
+# https://benjifisher.gitlab.io/slide-decks/index.html
+# https://gitlab.com/benjifisher/slide-decks/-/blob/main/markdown/index.md
 
 # Install revealjs
 # - git submodule
@@ -22,15 +22,15 @@
 #  --standalone \
 #  -t revealjs \
 #  --template pandoc/templates/default.revealjs \
-#  -o docs/devops-slides.html \
-#  pandoc/markdown/devops-slides.md
+#  -o docs/index.html \
+#  pandoc/markdown/index.md
 
 # Pandoc + Plantum
 # https://pandoc.org/filters.html
 # https://github.com/timofurrer/pandoc-plantuml-filter
 # Install: graphviz:amd64 (2.42.2-7+b4, automatic), plantuml:amd64 (1:1.2020.2+ds-3)
 # pip install pandoc-plantuml-filterz
-# pandoc  --standalone  -t revealjs  -o html/devops-slides.html  markdown/devops-slides.md --filter pandoc-plantuml
+# pandoc  --standalone  -t revealjs  -o html/index.html  markdown/index.md --filter pandoc-plantuml
 
 ## TODO - Move plantuml-images to html folder
 
@@ -108,3 +108,13 @@
 #       *** https://github.com/go-follow/time-interval
 #     Paper
 #       *** https://ics.uci.edu/~alspaugh/cls/shr/allen.html
+
+# Go Memory Database
+# https://github.com/proullon/ramsql
+# https://github.com/hashicorp/go-memdb
+# https://gitlab.com/cznic/ql
+
+# Shared Memory
+# https://www.baeldung.com/java-sharing-memory-between-jvms
+# https://medium.com/@glitchfix/ipc-shared-memory-concepts-of-c-in-golang-f539001226dc
+# https://github.com/cloudwego/shmipc-go

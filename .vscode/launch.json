@@ -1,7 +1,13 @@
 {
     "version": "0.2.0",
     "configurations": [
-
+        {
+            "type": "java",
+            "name": "AplanarRangosFechas",
+            "request": "launch",
+            "mainClass": "com.accreativos.comparator.AplanarRangosFechas",
+            "projectName": "on-call-tutti_5260c176"
+        },
         {
             "type": "java",
             "name": "Main",
@@ -29,7 +35,7 @@
             "request": "launch",
             "mode": "debug",
             "program": "monorepo/projects/github/actions/code/sample01/cmd/hypothetical/main.go"
-        },        
+        },
         {
             "name": "Delve Remote Go",
             "type": "go",

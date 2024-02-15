@@ -6,6 +6,12 @@ java_binary(
     runtime_deps = [":libs"],
 )
 
+java_binary(
+    name = "AplanarRangosFechas",
+    main_class = "com.accreativos.comparator.AplanarRangosFechas",
+    runtime_deps = [":libs"],
+)
+
 java_library(
     name = "libs",
     # srcs = glob(["src/main/java/**/*.java"]),

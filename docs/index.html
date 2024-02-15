@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="author" content="Benji Fisher">
-  <meta name="dcterms.date" content="2019-05-22">
-  <title>DevOps for Presentations: Markdown, Pandoc, Reveal.js, GitLab CI</title>
+  <meta name="author" content="Jose Juan Montiel">
+  <title>On call tutti</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -20,8 +19,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -35,6 +37,24 @@
       font-size: 75px;
       color: #FFF;
     }
+    
+    #for-the-very-very-impacients > h2:nth-child(1) {
+      font-size: 35px;
+    }
+    #for-the-very-very-impacients p {
+      font-size: 45px;
+      color: #FFF;
+      background-color: black;
+    }
+
+    #but-if-reach-here > h2:nth-child(1) {
+      font-size: 35px;
+    }
+    #but-if-reach-here p{
+      font-size: 45px;
+      color: #000;
+      background-color: #FFF;
+    }
   </style>
 </head>
 <body>
@@ -42,10 +62,9 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">DevOps for Presentations: Markdown, Pandoc,
-Reveal.js, GitLab CI</h1>
-  <p class="author">Benji Fisher</p>
-  <p class="date">May 22, 2019</p>
+  <h1 class="title">On call tutti</h1>
+  <p class="author">Jose Juan Montiel</p>
+  <p class="date">Feb 1, 2024</p>
 </section>
 
 <section>
@@ -61,7 +80,7 @@ data-background-image="background/slide1.jpg">
 <section id="section-1" class="slide level2"
 data-background-image="background/slide2.jpg">
 <h2 data-background-image="background/slide2.jpg"></h2>
-<p>And you are always attending all the call because you are the most
+<p>And you are always attending all the calls because you are the most
 expertise worker.</p>
 </section>
 <section id="section-2" class="slide level2"
@@ -78,8 +97,8 @@ data-background-image="background/slide4.jpg">
 <section id="section-4" class="slide level2"
 data-background-image="background/slide5.jpg">
 <h2 data-background-image="background/slide5.jpg"></h2>
-<p>Here is where this monorepo came to the rescue, and Bazel will build
-the solution.</p>
+<p>Here is, where monorepo came to the rescue, and Bazel will build the
+solution.</p>
 </section>
 <section id="section-5" class="slide level2"
 data-background-image="background/slide6.jpg">
@@ -89,16 +108,41 @@ data-background-image="background/slide6.jpg">
 <section id="section-6" class="slide level2"
 data-background-image="background/slide7.jpg">
 <h2 data-background-image="background/slide7.jpg"></h2>
-<p>Use bazel to coordinate the different programing languages</p>
+<p>Use Bazel to coordinate the different programing languages</p>
 </section>
 <section id="section-7" class="slide level2"
 data-background-image="background/slide8.jpg">
 <h2 data-background-image="background/slide8.jpg"></h2>
-<p>Build the most optimal algorithm to solve the problem</p>
+<p>Build the most accurate, performance and … algorithm to solve the
+problem</p>
 </section>
-<section id="code" class="slide level2">
-<h2>Code</h2>
-<p>https://github.com/josejuanmontiel/on-call-tutti</p>
+<section id="are-you-interesting-in-knowing-more" class="slide level2">
+<h2>Are you interesting in knowing more?</h2>
+<p><a
+href="https://github.com/josejuanmontiel/on-call-tutti/blob/develop/README.md">Go
+here</a></p>
+</section>
+<section id="for-the-impacients" class="slide level2">
+<h2>For the impacients</h2>
+<p><a
+href="https://github.com/josejuanmontiel/on-call-tutti/blob/develop/monorepo/projects/algorithms/README.md">Can
+wait?</a></p>
+</section>
+<section id="for-the-very-very-impacients" class="slide level2">
+<h2>For the very, very impacients</h2>
+<p>Use the data, implement the algorithm, test the result, beat another
+algorithm with new data, or even assure the correctness of the data,
+maybe the data are wrong, and the other algorithms fail.</p>
+</section>
+<section id="but-if-reach-here" class="slide level2">
+<h2>But if reach here…</h2>
+<p>Imagine this set of data for on-call problem</p>
+<figure>
+<img data-src="images/sample_data.png" alt="sample data" />
+<figcaption aria-hidden="true">sample data</figcaption>
+</figure>
+<p>Do you think the input should produce this output in an algorith?</p>
+<p>Challenge accepted?</p>
 </section></section>
     </div>
   </div>
