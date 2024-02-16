@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "RangoFechas",
+            "request": "launch",
+            "mainClass": "com.accreativos.comparator.RangoFechas",
+            "projectName": "on-call-tutti_5260c176"
+        },
+        {
+            "type": "java",
             "name": "AplanarRangosFechas",
             "request": "launch",
             "mainClass": "com.accreativos.comparator.AplanarRangosFechas",

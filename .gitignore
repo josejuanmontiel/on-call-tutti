@@ -1,1 +1,6 @@
 wip/*
+monorepo/.ijwb 
+monorepo/bazel-bin/* 
+monorepo/bazel-monorepo/* 
+monorepo/bazel-out/*
+monorepo/bazel-testlogs/*
