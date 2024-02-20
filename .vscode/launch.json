@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "java",
             "name": "RangoFechas",
@@ -27,6 +28,23 @@
             "name": "Solver",
             "request": "launch",
             "mainClass": "com.accreativos.comparator.Solver",
+            "classPaths": [
+                "$Auto",
+                "/home/jose/workspace/on-call-tutti/monorepo/projects/algorithms/on-call/comparator/src/main/resources"
+            ],
+            "env": {"INPUT":"/input/001.csv"},
+            "projectName": "on-call-tutti_5260c176"
+        },
+        {
+            "type": "java",
+            "name": "ReSolver",
+            "request": "launch",
+            "mainClass": "com.accreativos.comparator.ReSolver",
+            "classPaths": [
+                "$Auto",
+                "/home/jose/workspace/on-call-tutti/monorepo/projects/algorithms/on-call/comparator/src/main/resources"
+            ],
+            "env": {"INPUT":"/input/002.csv", "OUTPUT":"/home/jose/workspace/on-call-tutti/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/002_resolver.csv"},
             "projectName": "on-call-tutti_5260c176"
         },
         {

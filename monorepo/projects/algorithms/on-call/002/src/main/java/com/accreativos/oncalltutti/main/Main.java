@@ -1,13 +1,13 @@
-package com.accreativos.comparator;
+package com.accreativos.oncalltutti.main;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,17 +15,11 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
-import java.util.Random;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
 
-public class ReSolver {
+public class Main {
 		
 
 	private static void writeToFile(List<OnCallSchedule> items, String fileName) throws URISyntaxException {
@@ -46,9 +40,9 @@ public class ReSolver {
         }
 	}
 
-    private static List<OnCallSchedule> readItems(String fileName) throws URISyntaxException {
+    private static List<OnCallSchedule> readItems(String fileName) throws FileNotFoundException {
         List<OnCallSchedule> items = new ArrayList<>();
-        InputStream is = Solver.class.getResourceAsStream(fileName);
+        InputStream is = new FileInputStream(fileName);
         // using try with resource, Java 7 feature to close resources
         try (BufferedReader br =  new BufferedReader(new InputStreamReader(is))) {
 
@@ -124,15 +118,10 @@ public class ReSolver {
 		
 		try {
 			workers.addAll(readItems(INPUT));
-		} catch (URISyntaxException e) {
+		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		// for (OnCallSchedule workerCompositionFlatVO : workers) {
-		// 	System.out.println(workerCompositionFlatVO.toString());
-		// }
-		// System.out.println();
 
 		List<OnCallSchedule> workerListsProcessed = flatListWorkers(workers);
 
@@ -143,11 +132,6 @@ public class ReSolver {
 			e.printStackTrace();
 		}
 		
-		// for (OnCallSchedule workerCompositionFlatVO : workerListsProcessed) {
-		// 	System.out.println(workerCompositionFlatVO.toString());
-		// }
-		// System.out.println();
-		
 	}
 
 	private static List<OnCallSchedule> flatListWorkers(List<OnCallSchedule> workerLists) {
@@ -155,12 +139,9 @@ public class ReSolver {
 		
 		for (OnCallSchedule interatedRange : workerLists) {
 
-			System.out.println("*** *** *** ---interatedRange--->"+interatedRange.toString());
-
-			List<OnCallSchedule> overlaped = findByStartDateLessThanEqualAndEndDateGreaterThan(resultNewList, interatedRange.getStartDate());
+            List<OnCallSchedule> overlaped = findByStartDateLessThanEqualAndEndDateGreaterThan(resultNewList, interatedRange.getStartDate());
 			if (overlaped.size()>0) {
 				resultNewList.remove(overlaped.get(0)); 
-				// System.out.println("---overlaped--->"+overlaped.get(0).toString());
 			}
 
 			if (overlaped.size() == 1) {
@@ -169,7 +150,6 @@ public class ReSolver {
 				newInTheMiddle.setEndDate(overlaped.get(0).getEndDate());
 				newInTheMiddle.setPriority(overlaped.get(0).getPriority());
 				newInTheMiddle.setWorkerId(overlaped.get(0).getWorkerId());
-				;
 
 				if (interatedRange.getEndDate().longValue()<newInTheMiddle.getEndDate().longValue()) {
 					OnCallSchedule newToTheRight = new OnCallSchedule();
@@ -177,13 +157,11 @@ public class ReSolver {
 					newToTheRight.setEndDate(overlaped.get(0).getEndDate());
 					newToTheRight.setPriority(overlaped.get(0).getPriority());
 					newToTheRight.setWorkerId(overlaped.get(0).getWorkerId());
-					// System.out.println("---newToTheRight--->"+newToTheRight.toString());
 					resultNewList.add(newToTheRight);
 				}
 
 				newInTheMiddle.setEndDate(interatedRange.getStartDate()-1000);
 				newInTheMiddle.setWorkerId(overlaped.get(0).getWorkerId());
-				// System.out.println("---newInTheMiddle--->"+newInTheMiddle.toString());
 				resultNewList.add(newInTheMiddle);
 
 			} 
@@ -193,17 +171,7 @@ public class ReSolver {
 			if (overlaped.size()>0) {
 				interatedRange.setWorkerId(interatedRange.getWorkerId());
 			}
-			// System.out.println("---interatedRange--->"+interatedRange.toString());
 			resultNewList.add(interatedRange);
-
-
-			System.out.println("--- RESULT LIST ---");
-			sortListByStartDate(resultNewList);
-			for (OnCallSchedule workerCompositionFlatVO : resultNewList) {
-				System.out.println(workerCompositionFlatVO.toString());
-			}
-			System.out.println();
-
 		}
 
 		return resultNewList;
@@ -232,7 +200,6 @@ public class ReSolver {
         
 		for (int i = 0; i < workerListsProcessed.size(); i++) {
 			if (workerListsProcessed.get(i).getStartDate().longValue() <= startDate.longValue()) {
-				// result.add(workerListsProcessed.get(i));
 				for (int j = i; j < workerListsProcessed.size(); j++) {
 					if (workerListsProcessed.get(j).getEndDate().longValue() >= startDate.longValue()) {
 						result.add(workerListsProcessed.get(j));
@@ -240,15 +207,10 @@ public class ReSolver {
 					}
 				}
 				break;
-			    
 			}
-			
 		}
-
 		return result;
 	}
 
-	
-
-
 }
+

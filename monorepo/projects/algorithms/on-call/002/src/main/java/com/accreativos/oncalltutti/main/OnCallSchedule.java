@@ -1,4 +1,4 @@
-package com.accreativos.comparator;
+package com.accreativos.oncalltutti.main;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -55,6 +55,14 @@ public class OnCallSchedule {
             && workerId == ((OnCallSchedule) obj).getWorkerId()
             && priority.equals(((OnCallSchedule) obj).getPriority());
         return result;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + (int) (this.startDate ^ (this.startDate >>> 32));
+        hash = 97 * hash + (int) (this.endDate ^ (this.endDate >>> 32));
+        return hash;
     }
 
     public String toCSV() {

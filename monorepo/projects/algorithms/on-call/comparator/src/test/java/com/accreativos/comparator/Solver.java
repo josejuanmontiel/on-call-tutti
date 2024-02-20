@@ -383,15 +383,15 @@ public class Solver {
 	
 	public static void main(String[] args) {
 
-//		MYRUN=value
+//		INPUT=value
 
 		// Read environment variable
-		String MYRUN = System.getenv("MYRUN");
-        if (MYRUN == null) {
-            System.out.println("MYRUN variable not set");
+		String INPUT = System.getenv("INPUT");
+        if (INPUT == null) {
+            System.out.println("INPUT variable not set");
             System.exit(1);
         }
-        System.out.println("MYRUN: "+MYRUN);
+        System.out.println("INPUT: "+INPUT);
         
 //		for (int i = 0; i < 10; i++) {
 
@@ -399,7 +399,7 @@ public class Solver {
 			List<OnCallSchedule> workers = new ArrayList<OnCallSchedule>();
 			
 			try {
-				workers.addAll(readItems(MYRUN));
+				workers.addAll(readItems(INPUT));
 			} catch (URISyntaxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

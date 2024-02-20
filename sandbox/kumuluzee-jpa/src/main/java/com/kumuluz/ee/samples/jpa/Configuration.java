@@ -26,17 +26,17 @@ public class Configuration {
 
     public void init(@Observes @Initialized(RequestScoped.class) Object init) {
      	// Read environment variable
-		String MYRUN = System.getenv("MYRUN");
-        if (MYRUN == null) {
-            System.out.println("MYRUN variable not set");
+		String INPUT = System.getenv("INPUT");
+        if (INPUT == null) {
+            System.out.println("INPUT variable not set");
             System.exit(1);
         }
-        System.out.println("MYRUN: "+MYRUN);
+        System.out.println("INPUT: "+INPUT);
         
         // Listado composicion de precios
         List<TimeRange> workers = new ArrayList<TimeRange>();
         try {
-            workers.addAll(readItems(MYRUN));
+            workers.addAll(readItems(INPUT));
         } catch (URISyntaxException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
