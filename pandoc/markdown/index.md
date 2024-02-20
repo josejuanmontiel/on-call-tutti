@@ -48,8 +48,14 @@ Use the data, implement the algorithm, test the result, beat another algorithm w
 
 Imagine this set of data for on-call problem
 
-![sample data](images/sample_data.png)
+![sample data](images/sample_data_v1.png)
 
 Do you think the input should produce this output in an algorith?
 
 Challenge accepted?
+
+## But if...
+
+Or maybe sould be..
+
+![sample data](images/sample_data_v2.png)

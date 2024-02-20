@@ -1,9 +1,12 @@
 package com.accreativos.comparator;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class OnCallSchedule {
 
     Long startDate;
-    long endDate;
+    Long endDate;
     long workerId;
     Integer priority;
 
@@ -15,11 +18,11 @@ public class OnCallSchedule {
         this.startDate = startDate;
     }
 
-    public long getEndDate() {
+    public Long getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(long endDate) {
+    public void setEndDate(Long endDate) {
         this.endDate = endDate;
     }
 
@@ -41,7 +44,17 @@ public class OnCallSchedule {
 
     @Override
     public String toString() {
-        return startDate+" "+endDate+" "+workerId+" "+priority;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH.mm.ss'Z'");
+        return sdf.format(new Date(startDate))+"-"+sdf.format(new Date(endDate))+"-"+workerId+"-"+priority;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean result = startDate.equals(((OnCallSchedule) obj).getStartDate()) 
+            && endDate.equals(((OnCallSchedule) obj).getEndDate())
+            && workerId == ((OnCallSchedule) obj).getWorkerId()
+            && priority.equals(((OnCallSchedule) obj).getPriority());
+        return result;
     }
 
 }

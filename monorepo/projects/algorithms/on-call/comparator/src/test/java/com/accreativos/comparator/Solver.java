@@ -347,7 +347,7 @@ public class Solver {
 
                 OnCallSchedule item = new OnCallSchedule();
 				// Format datetime from YYYY-MM-DDTHH:MM:SSZ
-				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd'T'HH.mm.ss'Z'");
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH.mm.ss'Z'");
                 Date date = null;
                 try {
                     date = formatter.parse(attributes[0]);
@@ -399,7 +399,7 @@ public class Solver {
 			List<OnCallSchedule> workers = new ArrayList<OnCallSchedule>();
 			
 			try {
-				workers.addAll(readItems("/input/001.csv"));
+				workers.addAll(readItems(MYRUN));
 			} catch (URISyntaxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
