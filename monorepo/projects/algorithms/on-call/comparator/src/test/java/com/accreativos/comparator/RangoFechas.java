@@ -21,7 +21,7 @@ public class RangoFechas {
             this.level = level;
         }
 
-        public int getLevel() {
+        public Integer getLevel() {
             return level;
         }
 
@@ -29,7 +29,7 @@ public class RangoFechas {
             return startDate;
         }
 
-        public Object getPerson() {
+        public Integer getPerson() {
             return person;
         }
 

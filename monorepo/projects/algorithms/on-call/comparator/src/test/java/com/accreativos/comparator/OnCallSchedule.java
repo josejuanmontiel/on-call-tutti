@@ -42,6 +42,13 @@ public class OnCallSchedule {
         this.priority = priority;
     }
 
+
+    @Override
+    public int hashCode() {
+        // TODO Auto-generated method stub
+        return super.hashCode();
+    }
+
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH.mm.ss'Z'");
