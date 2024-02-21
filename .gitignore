@@ -4,3 +4,4 @@ monorepo/bazel-bin/*
 monorepo/bazel-monorepo/* 
 monorepo/bazel-out/*
 monorepo/bazel-testlogs/*
+sandbox/kumuluzee-jpa/target/*

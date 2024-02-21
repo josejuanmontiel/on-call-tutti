@@ -22,7 +22,6 @@ import java.util.List;
 public class Main {
 
 	private static void writeToFile(List<OnCallSchedule> items, String fileName) throws URISyntaxException {
-
 		try {
             Path path = Paths.get(fileName);
             Files.deleteIfExists(path);
