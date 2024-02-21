@@ -19,7 +19,7 @@ jobs:
             --template pandoc/templates/default.revealjs
             -H pandoc/styles/styles.html
             -o docs/index.html
-            pandoc/markdown/index.md            
+            pandoc/markdown/index.md pandoc/markdown/ranking.md
       - name: Commit files # commit the output folder
         run: |
           git config --local user.email "test@github.com"
