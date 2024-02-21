@@ -1,10 +1,14 @@
 name: Sample Go Action
 
-on:
-  push:
-    branches: [ develop ]
-    paths:
-      - 'monorepo/projects/algorithms/**'
+on: 
+  workflow_run:
+    workflows: ['CI']
+    types:
+      - completed  
+  # push:
+  #   branches: [ develop ]
+  #   paths:
+  #     - 'monorepo/projects/algorithms/**'
 
 jobs:
   ci:
@@ -13,6 +17,33 @@ jobs:
     #   run:
     #     working-directory: ./monorepo
     steps:
+      - uses: actions/checkout@v3
+      - uses: bazelbuild/setup-bazelisk@v2
+      - name: Mount bazel cache  # Optional
+        uses: actions/cache@v3
+        with:
+          path: "~/.cache/bazel"
+          key: bazel
+
+      - name: Run all solutions
+        run: |
+          bazel query //projects/algorithms/on-call/... | grep ":Main$" | while read line \
+          do \
+              ALG=$(echo $line | grep -oP 'on-call/\d{3}' | sed 's#on-call/##g') \
+              export INPUT=monorepo/projects/algorithms/on-call/comparator/src/main/resources/input/001.csv \
+              export OUTPUT=monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/001_ALG$(echo $ALG).csv \
+              bazel run $line \
+              export INPUT=monorepo/projects/algorithms/on-call/comparator/src/main/resources/input/002.csv \
+              export OUTPUT=monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/002_ALG$(echo $ALG).csv \
+              bazel run $line \
+          done
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: generated
+          path: monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/*_ALG*.csv
+
+
       # Replace the action with a similar one
       - uses: josejuanmontiel/on-call-tutti-action@v1.0.1
         with:
