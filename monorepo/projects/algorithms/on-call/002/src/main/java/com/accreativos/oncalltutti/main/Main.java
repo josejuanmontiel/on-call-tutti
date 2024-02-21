@@ -20,7 +20,6 @@ import java.util.Date;
 import java.util.List;
 
 public class Main {
-		
 
 	private static void writeToFile(List<OnCallSchedule> items, String fileName) throws URISyntaxException {
 		try {
