@@ -36,7 +36,7 @@ jobs:
               export INPUT=monorepo/projects/algorithms/on-call/comparator/src/main/resources/input/002.csv \
               export OUTPUT=monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/002_ALG$(echo $ALG).csv \
               bazel run $line \
-          done
+          done \
 
       - uses: actions/upload-artifact@v3
         with:
