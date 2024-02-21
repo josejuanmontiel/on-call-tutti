@@ -2,10 +2,10 @@ name: Sample Go Action
 
 on: 
   workflow_dispatch:
-  workflow_run:
-    workflows: [CI]
-    types:
-      - completed  
+  # workflow_run:
+  #   workflows: [CI]
+  #   types:
+  #     - completed  
   # push:
   #   branches: [ develop ]
   #   paths:
@@ -27,21 +27,22 @@ jobs:
           key: bazel
 
       - name: Run all solutions
+        working-directory: ./monorepo
         run: |
           bazel query //projects/algorithms/on-call/... | grep ":Main$" | while read line
           do
               ALG=$(echo $line | grep -oP 'on-call/\d{3}' | sed 's#on-call/##g')
-              export INPUT=monorepo/projects/algorithms/on-call/comparator/src/main/resources/input/001.csv
-              export OUTPUT=monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/001_ALG$(echo $ALG).csv
+              export INPUT=projects/algorithms/on-call/comparator/src/main/resources/input/001.csv
+              export OUTPUT=projects/algorithms/on-call/comparator/src/main/resources/output/001_ALG$(echo $ALG).csv
               bazel run $line
-              export INPUT=monorepo/projects/algorithms/on-call/comparator/src/main/resources/input/002.csv
-              export OUTPUT=monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/002_ALG$(echo $ALG).csv
+              export INPUT=projects/algorithms/on-call/comparator/src/main/resources/input/002.csv
+              export OUTPUT=projects/algorithms/on-call/comparator/src/main/resources/output/002_ALG$(echo $ALG).csv
               bazel run $line
           done
       - uses: actions/upload-artifact@v3
         with:
           name: generated
-          path: monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/*_ALG*.csv
+          path: projects/algorithms/on-call/comparator/src/main/resources/output/*_ALG*.csv
 
 
       # Replace the action with a similar one
