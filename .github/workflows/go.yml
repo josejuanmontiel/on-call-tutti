@@ -41,7 +41,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: generated
-          path: ${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/002_ALG002.csv
+          path: /home/runner/work/on-call-tutti/on-call-tutti/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/002_ALG002.csv
           if-no-files-found: error
 
 
