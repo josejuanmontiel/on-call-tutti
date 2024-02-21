@@ -14,9 +14,9 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
-    # defaults:
-    #   run:
-    #     working-directory: ./monorepo
+    defaults:
+      run:
+        working-directory: ./monorepo
     steps:
       - uses: actions/checkout@v3
       - uses: bazelbuild/setup-bazelisk@v2
@@ -27,7 +27,6 @@ jobs:
           key: bazel
 
       - name: Run all solutions
-        working-directory: ./monorepo
         run: |
           bazel query //projects/algorithms/on-call/... | grep ":Main$" | while read line
           do
@@ -43,6 +42,7 @@ jobs:
         with:
           name: generated
           path: projects/algorithms/on-call/comparator/src/main/resources/output/???_ALG???.csv
+          if-no-files-found: error
 
 
       # Replace the action with a similar one
