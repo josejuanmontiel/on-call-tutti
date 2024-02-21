@@ -42,7 +42,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: generated
-          path: ${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/*_ALG*.csv
+          path: projects/algorithms/on-call/comparator/src/main/resources/output/???_ALG???.csv
 
 
       # Replace the action with a similar one
