@@ -2,7 +2,7 @@ name: Sample Go Action
 
 on: 
   workflow_run:
-    workflows: ['CI']
+    workflows: [CI]
     types:
       - completed  
   # push:
