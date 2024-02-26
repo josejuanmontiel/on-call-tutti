@@ -21,9 +21,11 @@ jobs:
         with:
           path: "~/.cache/bazel"
           key: bazel
-      - name: Build bazel monorepo
+      - name: Prepare dependencies
         working-directory: ./monorepo
         run: bazel run //:gazelle
+      - name: Build bazel monorepo
+        working-directory: ./monorepo
         run: bazel build //...
       # - name: Test bazel monorepo
       #   run: bazel test //...
