@@ -15,17 +15,14 @@ jobs:
     #     working-directory: ./monorepo
     steps:
       - uses: actions/checkout@v3
-      - uses: bazelbuild/setup-bazelisk@v2
+      - uses: bazelbuild/setup-bazelisk@v3
       - name: Mount bazel cache  # Optional
         uses: actions/cache@v3
         with:
           path: "~/.cache/bazel"
           key: bazel
-      - name: Prepare dependencies
-        working-directory: ./monorepo
-        run: bazel run //:gazelle
       - name: Build bazel monorepo
         working-directory: ./monorepo
-        run: bazel build //...
+        run: bazelisk build //...
       # - name: Test bazel monorepo
       #   run: bazel test //...
