@@ -9,6 +9,8 @@ import (
 type Config struct {
 	Role          string
 	LeaseDuration time.Duration
+	// Directory path
+	Path string
 }
 
 func NewFromInputs(action *githubactions.Action) (*Config, error) {
@@ -19,6 +21,7 @@ func NewFromInputs(action *githubactions.Action) (*Config, error) {
 	}
 
 	c := Config{
+		Path:          action.GetInput("path"),
 		Role:          action.GetInput("role"),
 		LeaseDuration: d,
 	}
