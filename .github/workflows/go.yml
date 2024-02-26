@@ -32,9 +32,13 @@ jobs:
           do
               echo $line | grep -oP 'on-call/\d{3}' | sed 's#on-call/##g' | while read alg
               do
-                export INPUT=${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/input/$alg.csv
-                export OUTPUT=${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/$(echo $alg)_ALG$(echo $alg).csv
-                bazel run $line
+                for testSolution in ${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/input/*.csv; 
+                do 
+                  x="${testSolution##*/}"; x="${x%.*}"
+                  export INPUT=$testSolution
+                  export OUTPUT=${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/$(echo $x)_ALG$(echo $alg).csv
+                  bazel run $line
+                done
               done
           done
 
