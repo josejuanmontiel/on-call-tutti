@@ -30,20 +30,23 @@ jobs:
         run: |
           bazel query //projects/algorithms/on-call/... | grep ":Main$" | while read line
           do
-              ALG=$(echo $line | grep -oP 'on-call/\d{3}' | sed 's#on-call/##g')
-              export INPUT=${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/input/001.csv
-              export OUTPUT=${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/001_ALG$(echo $ALG).csv
-              bazel run $line
-              export INPUT=${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/input/002.csv
-              export OUTPUT=${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/002_ALG$(echo $ALG).csv
-              bazel run $line
+              echo $line | grep -oP 'on-call/\d{3}' | sed 's#on-call/##g' | while read alg
+              do
+                for testSolution in ${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/input/*.csv; 
+                do 
+                  x="${testSolution##*/}"; x="${x%.*}"
+                  export INPUT=$testSolution
+                  export OUTPUT=${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/$(echo $x)_ALG$(echo $alg).csv
+                  bazel run $line
+                done
+              done
           done
+
       - uses: actions/upload-artifact@v3
         with:
           name: solutions
           path: ${{ github.workspace }}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/???_ALG???.csv
           if-no-files-found: error
-
 
       # Replace the action with a similar one
       - uses: josejuanmontiel/on-call-tutti-action@v1.0.1

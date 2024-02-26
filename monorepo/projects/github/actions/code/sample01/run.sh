@@ -1,8 +1,10 @@
 env \
     'GITHUB_API_URL=https://api.github.com' \
     'GITHUB_REPOSITORY=blend/repo-that-uses-an-action' \
+    'GITHUB_OUTPUT=/tmp/console.txt' \
     'INPUT_ROLE=user' \
     'INPUT_LEASE-DURATION=1h' \
+    'INPUT_PATH=/home/jose/workspace/on-call-tutti/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output' \
 go run ./cmd/hypothetical/main.go
 
 on-call-tutti/monorepo$ bazelisk build //projects/github/actions/code/sample01/cmd/hypothetical:main

@@ -4,27 +4,22 @@ bazelisk run //projects/algorithms/on-call/comparator:Solver -- --debug
 export INPUT=$(pwd)/projects/algorithms/on-call/comparator/src/main/resources/input/001.csv  
 export OUTPUT=$(pwd)/projects/algorithms/on-call/comparator/src/main/resources/output/001_001.csv
 
-bazel query //projects/algorithms/on-call/... | grep ":Main$"
-# echo '//projects/algorithms/on-call/001/src/main/java/com/accreativos/oncalltutti/main:Main' | grep -oP 'on-call/\d{3}' |  sed 's#on-call/##g'
-
-bazel query //projects/algorithms/on-call/... | grep ":Main$" | grep -oP 'on-call/\d{3}' |  sed 's#on-call/##g'
-
 bazel query //projects/algorithms/on-call/... | grep ":Main$" | while read line
 do
-    ALG=$(echo $line | grep -oP 'on-call/\d{3}' | sed 's#on-call/##g')
-    export INPUT=$(pwd)/projects/algorithms/on-call/comparator/src/main/resources/input/001.csv  
-    export OUTPUT=$(pwd)/projects/algorithms/on-call/comparator/src/main/resources/output/001_ALG$(echo $ALG).csv
-    bazel run $line
-
-    export INPUT=$(pwd)/projects/algorithms/on-call/comparator/src/main/resources/input/002.csv  
-    export OUTPUT=$(pwd)/projects/algorithms/on-call/comparator/src/main/resources/output/002_ALG$(echo $ALG).csv
-    bazel run $line
+    echo $line | grep -oP 'on-call/\d{3}' | sed 's#on-call/##g' | while read alg
+    do
+      for FILE in $(pwd)/projects/algorithms/on-call/comparator/src/main/resources/input/*.csv; 
+      do 
+        echo $FILE;
+        x="${FILE##*/}"; x="${x%.*}"
+        OUTPUT=$(pwd)/projects/algorithms/on-call/comparator/src/main/resources/output/$(echo $x)_ALG$(echo $alg).csv
+        echo $OUTPUT
+      done
+      echo "---------$line------"
+    done
 done
 
-
-
 bazel run $(bazel query //projects/algorithms/on-call/...)
-
 
 bazelisk build -c dbg //projects/samples/go_hello_world...
 
