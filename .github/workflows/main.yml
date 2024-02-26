@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  workflow_dispatch:  
   push:
     branches: [ develop ]
     paths:
@@ -22,6 +23,7 @@ jobs:
           key: bazel
       - name: Build bazel monorepo
         working-directory: ./monorepo
+        run: bazel run //:gazelle
         run: bazel build //...
       # - name: Test bazel monorepo
       #   run: bazel test //...

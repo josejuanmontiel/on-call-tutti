@@ -49,7 +49,7 @@ jobs:
           if-no-files-found: error
 
       # Replace the action with a similar one
-      - uses: josejuanmontiel/on-call-tutti-action@v1.0.1
+      - uses: josejuanmontiel/on-call-tutti-action@v1.0.2
         with:
           lease-duration: 2h
           role: 'user'
