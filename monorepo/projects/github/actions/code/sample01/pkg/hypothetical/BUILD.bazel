@@ -6,7 +6,6 @@ go_library(
      visibility = ["//visibility:public"],
      deps = [
          "@com_github_sethvargo_go_githubactions//:go_default_library",
-         "@com_github_olekukonko_tablewriter//:go_default_library",
          "@com_github_cespare_xxhash_v2//:go_default_library"
      ]
 )

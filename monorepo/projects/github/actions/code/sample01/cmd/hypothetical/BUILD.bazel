@@ -6,6 +6,7 @@ go_binary(
     importpath = "github.com/josejuanmontiel/on-call-tutti/monorepo/projects/github/actions/code/sample01/cmd/hypothetical",
     deps = [
         '//projects/github/actions/code/sample01/pkg/hypothetical',
+         "@com_github_olekukonko_tablewriter//:go_default_library",
          "@com_github_sethvargo_go_githubactions//:go_default_library"
     ]
 )
