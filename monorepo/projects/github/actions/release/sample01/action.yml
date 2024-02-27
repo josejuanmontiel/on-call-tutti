@@ -11,7 +11,11 @@ inputs:
     description: 'Role'
     required: true
     default: 'admin'
+  path:
+    description: 'Folder to find the outputs with pattern'
+    required: true
+    default: '${{ github.workspace }}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output'
 outputs:
-  result: # id of the output
-    description: 'The sample result'
+  result:
+    description: 'A table with the results'
 
