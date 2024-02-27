@@ -1,13 +1,12 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
      name = "hypothetical",
-     srcs = ["config.go","run.go"],
+     srcs = glob(["*.go"]),
      importpath = "github.com/josejuanmontiel/on-call-tutti/monorepo/projects/github/actions/code/sample01/pkg/hypothetical",
      visibility = ["//visibility:public"],
      deps = [
          "@com_github_sethvargo_go_githubactions//:go_default_library",
          "@com_github_olekukonko_tablewriter//:go_default_library",
-         "@com_github_cespare_xxhash_v2//:go_default_library",
-
+         "@com_github_cespare_xxhash_v2//:go_default_library"
      ]
 )
