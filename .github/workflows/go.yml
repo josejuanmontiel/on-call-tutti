@@ -27,7 +27,6 @@ jobs:
           key: bazel
 
       - name: Run all solutions
-        id: csv_verify
         run: |
           bazel query //projects/algorithms/on-call/... | grep ":Main$" | while read line
           do
@@ -51,6 +50,7 @@ jobs:
 
       # Replace the action with a similar one
       - uses: josejuanmontiel/on-call-tutti-action@v1.0.3
+        id: csv_verify
         with:
           lease-duration: 2h
           role: 'user'
