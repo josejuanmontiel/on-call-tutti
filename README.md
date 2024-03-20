@@ -73,13 +73,11 @@ Later, we may need customize docker image to use other things in transformation 
 
 ## Bazel - Monorepo
 
-Now continuing with infrastructure, the good objective will be mix different languages in same place, and Bazel could be a good option to build a monorepo where all the code lives. To start with [some example](https://github.com/kriscfoster/multi-language-bazel-monorepo/tree/main) this seems to be a good one.
+Now continuing with infrastructure, to let all the people try, we'll mix different languages in same place, and Bazel could be a good option to build a monorepo where all the code lives. To start with, we'll use [this example](https://github.com/kriscfoster/multi-language-bazel-monorepo/tree/main), seems to be a good one.
 
-We could use [Pandoc inside Bazel](https://github.com/ProdriveTechnologies/bazel-pandoc/tree/master/sample), but to use different options that maybe not implemented, we keep pandoc alone, outside the monorepo, because maybe use Bazel for pandoc be more difficult (to me) doing or modifying the tooling.
+We could use [Pandoc inside Bazel](https://github.com/ProdriveTechnologies/bazel-pandoc/tree/master/sample), but to use different options that maybe not implemented in the bazel, we keep pandoc alone, outside the monorepo, because maybe use Bazel for pandoc be more difficult (to me) doing or modifying the tooling.
 
-With a monorepo, will be easier mixing languages... and better integrating different blocks of code, to act as one.
-
-The final idea of this (starting with on-call algorithm) is mix in one place different implementations of one algorithm to measure the correctness of each other and comparing the efficient ot others. With monorepo (and Bazel) we can invoke each peace from one above... We'll dig into it later.
+The final idea of this (starting with on-call proble) is mix in one place different implementations that solve one problem and measure the correctness of each other and comparing the efficient of eatch other. With monorepo (and Bazel) we can invoke each piece from one above... We'll dig into it later.
 
 ## Github actions - in go
 
@@ -134,7 +132,9 @@ Why not :D
 
 ## On-call (duty-schedule)
 
-Now, show me the code. The first idea came from how to build a system that schedule how a group of expert, with different level of expertise, can handle the emergency call to take care of a problem in the system, as we known: "on call duty" or "on call schedule" ... and the idea is discover the best algorithm and most efficient for given a number of range of time, where some people (with level) can be on-call to solve some emergency, how the system optimize how to discover who is the right person for the level of the problem in some particular time.
+Now, show me the code. The first idea came from how to build a system that schedule how a group of expert, with different level of expertise, can handle the emergency call to take care of a problem in the system, as we known: "on call duty" or "on call schedule" ... and the idea is discover the best algorithm and most efficient for given range of time, where some people (with level) can be on-call to solve some emergency, how the system optimize how to discover who is the right person for the level of the problem in some particular time.
+
+![Schema](schema2.drawio.svg)
 
 The idea, for start is that the part of the monorepo responsible for test the different implementation, and discover which is the best, call each part given to them a environment variable with the path of a csv file with a list of time range with the identification of the person and his level, and another variable where the algorithm need to store the result csv with the list of the time range (without overlapping) and with person and which level (here if to person are available in the same range of time we prefer the most level of expertise to solve the problem... later we may store the lowest to attend another call that occur in the same time).
 
@@ -142,9 +142,9 @@ The idea, for start is that the part of the monorepo responsible for test the di
 
 This is the first idea, but why not to leave open to another kind of algorithm (and because of Bazel ... in any language) ... because of this we start building /monorepo/projects/algorithms/on-call/001 the first example and the other can go in 002, 003 ... later for other algorithm ot the real daily basis ... we can continue an /monorepo/projects/algorithms/OTHER/001
 
-### How to test
+### How we test each algorithm?
 
-As we said... with the environment variable INPUT_FILE we can read the csv and with OUTPUT_FILE we can store the result, this code we'll be in /monorepo/projects/algorithms/on-call/comparator folder and the initial data will be in /monorepo/projects/algorithms/on-call/comparator/src/main/resources/input/001.csv and the solution to compare the result monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/001.csv ... the idea is to improve the option to test to try to beat the actual solutions. In this way if someone that came with his/her PR to the repo to solve the problem, and think that actual solution have a bug, that don't consider some edge case, can include his/her 002.csv data for intput and output and make that the actual algorithm false.
+As we said... with the environment variable INPUT we can read the csv and with OUTPUT we can store the result, this code we'll be in /monorepo/projects/algorithms/on-call/comparator folder and the initial data will be in /monorepo/projects/algorithms/on-call/comparator/src/main/resources/input/001.csv and the solution to compare the result monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/001.csv ... the idea is to improve the option to test to try to beat the actual solutions. In this way if someone that came with his/her PR to the repo to solve the problem, and think that actual solution have a bug, that don't consider some edge case, can include his/her 002.csv data for intput and output and make that the actual algorithm false.
 
 No need to say, that this algorithm need to work with 001.csv data ... in the begining, unless this data where incorrect, in that case may need to point the problem in the code and/or in the data.
 

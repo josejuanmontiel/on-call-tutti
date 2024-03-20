@@ -27,6 +27,7 @@ jobs:
           key: bazel
 
       - name: Run all solutions
+        id: csv_verify
         run: |
           bazel query //projects/algorithms/on-call/... | grep ":Main$" | while read line
           do
@@ -54,5 +55,15 @@ jobs:
           lease-duration: 2h
           role: 'user'
           path: ${{ github.workspace }}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output
+      # - env:
+      #     OUTPUT1: ${{needs.job1.outputs.output1}}
+      #     OUTPUT2: ${{needs.job1.outputs.output2}}
+      #   run: echo "$OUTPUT1 $OUTPUT2"
+      - name: "Example output call between steps"
+        run: |
+          echo "Result of csv comparation"
+          echo "${{steps.csv_verify.outputs.result}}"
+    
 
+              
 
