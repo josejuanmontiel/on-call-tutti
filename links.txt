@@ -82,6 +82,9 @@
     # https://github.com/PagerDuty/incident-response-docs/blob/master/docs/oncall/being_oncall.md
 # https://github.com/linkedin/oncall/blob/master/e2e/test_override.py
 
+# https://github.com/IPQualityScore/GoIPQSDBReader
+# 
+
 # https://github.com/encoredev/example-app-oncall/blob/main/schedules/schedules.go
 # https://github.com/form3tech-oss/go-pagerduty-oncall-report
 # https://github.com/djlauk/oncasc
@@ -108,6 +111,14 @@
 #       *** https://github.com/go-follow/time-interval
 #     Paper
 #       *** https://ics.uci.edu/~alspaugh/cls/shr/allen.html
+
+# CSV Compare
+# https://medium.com/@prabhavithreddy/a-native-approach-to-compare-two-csv-files-4549c711a6da
+# https://github.com/aswinkarthik/csvdiff
+
+# FileReader
+# https://www.meetgor.com/golang-file-read/
+# https://github.com/prabhavithreddy/go-csv/blob/main/FileReader/reader.go
 
 # Go Memory Database
 # https://github.com/proullon/ramsql
