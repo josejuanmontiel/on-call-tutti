@@ -134,9 +134,25 @@ Why not :D
 
 Now, show me the code. The first idea came from how to build a system that schedule how a group of expert, with different level of expertise, can handle the emergency call to take care of a problem in the system, as we known: "on call duty" or "on call schedule" ... and the idea is discover the best algorithm and most efficient for given range of time, where some people (with level) can be on-call to solve some emergency, how the system optimize how to discover who is the right person for the level of the problem in some particular time.
 
+To test, we have a list of input file, and a list of algorith to pass this files, via env variable, and the algorithm must produce an output, where another env variable said, and later we check if correspond with the expected for this input.
+
 ![Schema](schema2.drawio.svg)
 
 The idea, for start is that the part of the monorepo responsible for test the different implementation, and discover which is the best, call each part given to them a environment variable with the path of a csv file with a list of time range with the identification of the person and his level, and another variable where the algorithm need to store the result csv with the list of the time range (without overlapping) and with person and which level (here if to person are available in the same range of time we prefer the most level of expertise to solve the problem... later we may store the lowest to attend another call that occur in the same time).
+
+    bazel query //projects/algorithms/on-call/... | grep ":Main$" | while read line
+    do
+        echo $line | grep -oP 'on-call/\d{3}' | sed 's#on-call/##g' | while read alg
+        do
+        for testSolution in ${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/input/*.csv; 
+        do 
+            x="${testSolution##*/}"; x="${x%.*}"
+            export INPUT=$testSolution
+            export OUTPUT=${GITHUB_WORKSPACE}/monorepo/projects/algorithms/on-call/comparator/src/main/resources/output/$(echo $x)_ALG$(echo $alg).csv
+            bazel run $line
+        done
+        done
+    done
 
 ### Algorithms
 
